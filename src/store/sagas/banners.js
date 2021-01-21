@@ -1,9 +1,15 @@
-import { takeLatest, put } from 'redux-saga/effects';
+import { takeLatest, put, call, delay } from 'redux-saga/effects';
+import api from '../../services/api';
 
-function* getTodoList(action) {
-	yield put({ type: 'GET_EMAILS', email: action.email });
+function* getTodoList() {
+	const response = yield call(api.get, '/suarota');
+	yield delay(2000);
+	yield put({
+		type: 'SUCCESS_GET_BANNERS',
+		banners: response.data,
+	});
 }
 
 export default function* root() {
-	yield takeLatest('ASYNC_GET_EMAILS', getTodoList);
+	yield takeLatest('REQUEST_GET_BANNERS', getTodoList);
 }

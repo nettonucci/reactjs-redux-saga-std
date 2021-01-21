@@ -1,9 +1,6 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import * as EmailsActions from '../store/actions/emails';
 
 const Users = ({ emails }) => {
 	return (
@@ -17,7 +14,4 @@ const mapStateToProps = state => ({
 	emails: state.emails,
 });
 
-const mapDispatchToProps = dispatch =>
-	bindActionCreators(EmailsActions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Users);
+export default connect(mapStateToProps)(Users);

@@ -1,6 +1,6 @@
 export function toggleEmails(email) {
 	return {
-		type: 'ASYNC_GET_EMAILS',
+		type: 'GET_EMAILS',
 		email,
 	};
 }
